@@ -67,4 +67,31 @@ public class Lua {
 			+" ARGV[3],ARGV[4],ARGV[5],ARGV[6],ARGV[7],ARGV[8],ARGV[9],ARGV[10]"
 			+" ,ARGV[11],ARGV[12],ARGV[13],ARGV[14])"
 			+" end ";
+	
+	/* 用户刷礼物 
+	 * 返回值说明：
+	 * 0 : 用户不存在
+	 * 1 : 消费成功
+	 * -1 : 余额不足
+	 */
+	public final static String DECR_BASJOO =""
+			+" local consumer_leaf = redis.call('hget',KEYS[1],KEYS[2]) "
+			+" local reciver_coin = redis.call('hget',KEYS[3],KEYS[4]) "
+			+" local argv = tonumber(ARGV[1]) "
+			+" local consume_money = tonumber(consumer_leaf) "
+			+" local recive_money = tonumber(reciver_coin) "
+			+" if argv == nil or consume_money == nil or recive_money == nil then "
+			+"     return 0"
+			+" end "
+			+" if consume_money and recive_money then "
+			+"     if consume_money >= argv then"
+			+"        local x = consume_money - argv"
+			+"        local y = recive_money + argv "
+			+"        redis.call('hset',KEYS[1],KEYS[2],x) "
+			+"        redis.call('hset',KEYS[3],KEYS[4],y) "
+			+"        return 1"
+			+"     else "
+			+"        return -1"
+			+"     end "
+			+" end ";
 }

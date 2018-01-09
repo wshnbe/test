@@ -15,7 +15,7 @@ import com.ttmv.datacenter.agent.redis.jedis.impl.JedisPoolAgent;
 public class redisAgent {
 
 	private RedisPoolConfig config = new RedisPoolConfig(20, 300, 6000);
-	private RedisAgent redis = new JedisPoolAgent("192.168.15.23", 50031, config, 60000);
+	private RedisAgent redis = new JedisPoolAgent("localhost", 6379, config, 60000);
 	private final String TCOIN = "TCOIN_";
 	private final String TQUAN = "TQUAN_";
 	private final String BROKERAGE = "BROKERAGE_";
@@ -24,14 +24,15 @@ public class redisAgent {
 	public void testLua(){
 		/* 设置Lua调用redis的key */
 		List<String> keys = new ArrayList<String>();
-		keys.add("12");
-		keys.add("balance");
-		keys.add("freezeBalance");
+		keys.add("basjoo:leaf:35");
+		keys.add("basjoo_leaf");
+		keys.add("basjoo:coin:377766");
+		keys.add("basjoo_coin");
 		/* 设置调用Lua脚本调用的值 */
 		List<String> argvs = new ArrayList<String>();
-		argvs.add("30");
+		argvs.add("888888859");
 		try {
-			System.out.println(redis.evalLua(Lua.DECR_FREEZE, keys, argvs));
+			System.out.println(redis.evalLua(Lua.DECR_BASJOO, keys, argvs));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

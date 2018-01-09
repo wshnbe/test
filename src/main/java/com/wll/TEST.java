@@ -8,5 +8,7 @@ public class TEST {
 		/* 添加一行测试内容 */
 		Hashtable<String, String> hs = new Hashtable<String, String>();
 		System.out.println(hs);
+		String test = hs.get("test");
+		System.out.println(test);
 	}
 }
