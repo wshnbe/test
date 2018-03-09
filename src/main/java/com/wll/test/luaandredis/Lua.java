@@ -94,4 +94,7 @@ public class Lua {
 			+"        return -1"
 			+"     end "
 			+" end ";
+
+	public final static String GET = ""+
+			"return redis.call('get','bb')";
 }

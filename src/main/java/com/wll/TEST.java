@@ -10,5 +10,9 @@ public class TEST {
 		System.out.println(hs);
 		String test = hs.get("test");
 		System.out.println(test);
+		String version = "1.1.1".replace(".", "");
+		int v = Integer.parseInt(version);
+		System.out.println(v);
+		
 	}
 }

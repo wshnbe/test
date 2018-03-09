@@ -62,6 +62,20 @@ public class redisAgent {
 		}
 	}
 	
+	
+	@Test
+	public void testGet(){
+		List<String> keys = new ArrayList<String>();
+		/* 设置调用Lua脚本调用的值 */
+		List<String> argvs = new ArrayList<String>();
+		try {
+			Object obj = redis.evalLua(Lua.GET, keys, argvs);
+			System.out.println(obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * 将map数据类型转换成指定的List数据结构类型
 	 * @param map
