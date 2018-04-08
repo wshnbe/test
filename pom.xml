@@ -108,13 +108,6 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>4.2.3.RELEASE</version>
 		</dependency>
-		<!-- redis客户端的连接 -->
-		<dependency>
-			<groupId>com.ttmv.datacenter.agent.redis</groupId>
-			<artifactId>redisAgent</artifactId>
-			<version>2.2-SNAPSHOT</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -130,23 +123,6 @@
 			<groupId>org.apache.hbase</groupId>
 			<artifactId>hbase-common</artifactId>
 			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>jdk.tools</groupId>
-			<artifactId>jdk.tools</artifactId>
-			<version>1.6</version>
-		</dependency>
-		<!-- domain 层协议 -->
-		<dependency>
-			<groupId>com.datacenter.domain</groupId>
-			<artifactId>Domain</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		<!-- worker处理 -->
-		<dependency>
-			<groupId>com.datacenter.worker</groupId>
-			<artifactId>workerManager</artifactId>
-			<version>1.4-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -184,16 +160,6 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.26</version>
-		</dependency>
-		<dependency>
-			<groupId>com.ttmv.datacenter.agent.redis</groupId>
-			<artifactId>redisAgent</artifactId>
-			<version>2.2-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.ttmv.datacenter</groupId>
-			<artifactId>ZKNodeTool</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>io.netty</groupId>

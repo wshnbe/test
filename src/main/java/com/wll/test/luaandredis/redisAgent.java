@@ -8,14 +8,11 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.ttmv.datacenter.agent.redis.RedisAgent;
-import com.ttmv.datacenter.agent.redis.RedisPoolConfig;
-import com.ttmv.datacenter.agent.redis.jedis.impl.JedisPoolAgent;
+import redis.clients.jedis.Jedis;
 
 public class redisAgent {
 
-	private RedisPoolConfig config = new RedisPoolConfig(20, 300, 6000);
-	private RedisAgent redis = new JedisPoolAgent("localhost", 6379, config, 60000);
+	private Jedis redis = new Jedis("localhost",6379);
 	private final String TCOIN = "TCOIN_";
 	private final String TQUAN = "TQUAN_";
 	private final String BROKERAGE = "BROKERAGE_";
@@ -32,7 +29,7 @@ public class redisAgent {
 		List<String> argvs = new ArrayList<String>();
 		argvs.add("888888859");
 		try {
-			System.out.println(redis.evalLua(Lua.DECR_BASJOO, keys, argvs));
+			System.out.println(redis.eval(Lua.DECR_BASJOO, keys, argvs));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,7 +52,7 @@ public class redisAgent {
 			List<String> keys = this.getKeys("101");
 			List<String> values = this.getMuliFields(maps);
 			try {
-				redis.evalLua(Lua.INIT_ACCOUNT, keys,values);
+				redis.eval(Lua.INIT_ACCOUNT, keys,values);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -69,7 +66,7 @@ public class redisAgent {
 		/* 设置调用Lua脚本调用的值 */
 		List<String> argvs = new ArrayList<String>();
 		try {
-			Object obj = redis.evalLua(Lua.GET, keys, argvs);
+			Object obj = redis.eval(Lua.GET, keys, argvs);
 			System.out.println(obj);
 		} catch (Exception e) {
 			e.printStackTrace();
